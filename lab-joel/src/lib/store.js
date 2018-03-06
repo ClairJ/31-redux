@@ -1,4 +1,4 @@
 import {createStore} from 'redux';
-import reducer from '../reducers/index.js';
+import reducer from '../reducers/category.js';
 
 export default () => createStore(reducer);

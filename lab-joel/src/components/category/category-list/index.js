@@ -2,22 +2,24 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {renderIf} from '../../../lib/utils.js';
 import CategoryForm from '../category-form/index.js';
-import {categoryUpdate, categoryDelete} from '../../../actions/index.js';
+import {categoryUpdate, categoryDelete} from '../../../actions/category-action.js';
 
 class CategoryList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      category: this.props.category ? this.props.category
-        : undefined,
-      updating: false,
-    };
+    this.state =
+      this.props.category ? this.props.category :
+        {
+          title: '',
+          budget: 0,
+          updating: false,
+        };
 
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDelete() {
-    this.props.CategoryListCategoryDelete(this.state);
+    this.props.handleDelete(this.props.category);
   }
   render() {
     return(
